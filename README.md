@@ -1,5 +1,5 @@
 ## Coursework Template
-
+Added new line
 ### CM2040 Database Networks and the Web
 
 #### (SUBMISSION) How to navigate the AML Micro-Blogging app once its up and running
