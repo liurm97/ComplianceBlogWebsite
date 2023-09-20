@@ -1,0 +1,32 @@
+<!-- LAYOUT FOR READER HOME PAGE -->
+
+<section class="box">
+
+  <!-- READER HOME PUBLISHED ARTICLE -->
+  <div class="articles">
+    <h1 class="reader__location">Published Articles</h1>
+  </div>
+
+  <!-- READER HOME PUBLISHED ARTICLE - HEADINGS-->
+  <div class="reader__article-headings">
+    <h3>Title</h3>
+    <h3>Published At</h3>
+  </div>
+
+  <!-- READER HOME PUBLISHED ARTICLE - ARTICLES -->
+  <div class="article-list">
+    <% for( let i=articleRows.length - 1; i>=0 ; i-- ) { %>
+      <% if (articleRows[i].is_published===1) { %>
+        <form action="/reader/article/<%= articleRows[i].id %>" method="POST">
+          <input type="submit" name="<%= articleRows[i].title %>" id="<%= articleRows[i].title %>"
+            value="<%= articleRows[i].title %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= articleRows[i].modified_at %>">
+        </form>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+
+        <% } %>
+          <% } %>
+  </div>
+
+
+</section>

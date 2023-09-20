@@ -1,0 +1,153 @@
+<!-- LAYOUT FOR AUTHOR HOME PAGE -->
+
+<section class="author-box">
+
+  <!-- LINK TO SETTING -->
+  <div class="author__setting">
+    <a href="/author/setting">&#9794;Settings</a>
+  </div>
+
+  <!-- DRAFT ARTICLES SECTION   -->
+  <div class="articles">
+    <h1 id="draft_article" class="reader__location">Draft Articles</h1>
+
+    <div class="author__article-box">
+
+      <!-- DRAFT ARTICLES SECTION - HEADINGS -->
+      <div class="author__article-headings">
+        <h3>Title</h3>
+        <h3 class="author__article-subtitle">Subtitle</h3>
+        <h3>Created</h3>
+        <h3>Last Modified</h3>
+        <h3>Actions</h3>
+      </div>
+
+      <!-- DRAFT ARTICLES SECTION - ARTICLES -->
+      <div class="author__articles">
+        <% for( let i=0; i < draftArticles.length; i++ ) { %>
+          <div class="author__article-row">
+            <span>
+              <%= draftArticles[i].title %>
+            </span>
+            <span>
+              <%= draftArticles[i].subtitle %>
+            </span>
+            <span>
+              <%= draftArticles[i].created_at %>
+            </span>
+            <span>
+              <%= draftArticles[i].modified_at %>
+            </span>
+
+            <!-- DRAFT ARTICLES SECTION - ACTIONS = EDIT | PUBLISH | DELETE -->
+            <div class="author__actions">
+              <form action="/author/article/<%= draftArticles[i].id %>/edit" method="GET">
+                <button class="author__article-action">EDIT</button>
+              </form>
+              <form action="/author/article/<%= draftArticles[i].id %>/publish" method="POST">
+                <button class="author__article-action">PUBLISH</button>
+              </form>
+              <form action="/author/article/<%= draftArticles[i].id %>/delete" method="POST">
+                <button class="author__article-action">DELETE</button>
+              </form>
+            </div>
+          </div>
+          <% } %>
+      </div>
+
+      <!-- DRAFT ARTICLES SECTION - ACTIONS = CREATE NEW DRAFT -->
+      <form action="/author/article/create" method="GET">
+        <button class="article__article-btn" type="submit">Create New Draft</button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- PUBLISHED ARTICLES SECTION   -->
+  <div class="articles">
+    <h1 id="published_article" class="reader__location">Published Articles</h1>
+
+    <!-- PUBLISHED ARTICLES SECTION - HEADINGS-->
+    <div class="author__article-headings">
+      <h3>Title</h3>
+      <h3 class="author__article-subtitle">Subtitle</h3>
+      <h3>Created</h3>
+      <h3>Published</h3>
+      <h3>Likes</h3>
+      <h3>Actions</h3>
+    </div>
+
+    <!-- PUBLISHED ARTICLES SECTION - LATEST ARTICLES -->
+    <% for( let i=publishedArticles.length - 1; i>= 0; i-- ) { %>
+      <% if (i===publishedArticles.length - 1) { %>
+        <span class="latest-published">
+          Latest Published
+        </span>
+        <div class="author__article-row latest">
+          <span>
+            <%= publishedArticles[i].title %>
+          </span>
+          <span>
+            <%= publishedArticles[i].subtitle %>
+          </span>
+          <span>
+            <%= publishedArticles[i].created_at %>
+          </span>
+          <span>
+            <%= publishedArticles[i].modified_at %>
+          </span>
+          <span>
+            <%= publishedArticles[i].num_likes %>
+          </span>
+
+          <!-- PUBLISHED ARTICLES SECTION - LATEST ARTICLE - ACTIONS = SHARE | DELETE -->
+          <div id="author__actions" class="author__actions">
+            <button id="btn-share" class="author__article-action btn-share-<%= publishedArticles[i].id%>">SHARE</button>
+            <form action="/author/article/<%= publishedArticles[i].id %>/delete" method="POST">
+              <button class="author__article-action">DELETE</button>
+            </form>
+            <div class="article__share-box">
+              <a href="http://localhost:3000/reader/article/<%= publishedArticles[i].id %>">&#9741;&nbsp;
+                http://localhost:3000/reader/article/<%= publishedArticles[i].id %></a>
+            </div>
+          </div>
+        </div>
+        %>
+
+        <!-- PUBLISHED ARTICLES SECTION - OTHER ARTICLES -->
+        <% } else { %>
+          <div class="author__article-row">
+            <span>
+              <%= publishedArticles[i].title %>
+            </span>
+            <span>
+              <%= publishedArticles[i].subtitle %>
+            </span>
+            <span>
+              <%= publishedArticles[i].created_at %>
+            </span>
+            <span>
+              <%= publishedArticles[i].modified_at %>
+            </span>
+            <span>
+              <%= publishedArticles[i].num_likes %>
+            </span>
+
+            <!-- PUBLISHED ARTICLES SECTION - OTHER ARTICLES - ACTIONS = SHARE | DELETE -->
+            <div id="author__actions" class="author__actions">
+              <button id="btn-share"
+                class="author__article-action btn-share-<%= publishedArticles[i].id%>">SHARE</button>
+              <form action="/author/article/<%= publishedArticles[i].id %>/delete" method="POST">
+                <button class="author__article-action">DELETE</button>
+              </form>
+              <div class="article__share-box">
+                <a href="http://localhost:3000/reader/article/<%= publishedArticles[i].id %>">&#9741;&nbsp;
+                  http://localhost:3000/reader/article/<%= publishedArticles[i].id %></a>
+              </div>
+            </div>
+          </div>
+          <% } %>
+            <% } %>
+  </div>
+  </div>
+</section>

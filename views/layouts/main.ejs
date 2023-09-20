@@ -1,0 +1,46 @@
+<!-- MAIN TEMPLATE LAYOUT FILE FOR THE MICRO-BLOGGING PROJECT -->
+<!-- IDEA INSPIRED BY = `The Net Ninja` Youtuber in his Youtube Series -->
+<!-- Youtube Series link - https://www.youtube.com/watch?v=-foo92lFIto&list=PL4cUxeGkcC9hAJ-ARcYq_z6lDZV7kT1xD&pp=iAQB -->
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- DYNAMICALLY UPDATE TITLE DESCRIPTION -->
+  <meta name="description" content="<%= titleDescription.description %>">
+
+  <!-- LINK TO CSS -->
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <!-- LINK TO JS -->
+  <script src="/js/script.js" defer></script>
+
+  <!-- DYNAMICALLY UPDATE TITLE -->
+  <title>
+    <%= titleDescription.title %>
+  </title>
+</head>
+
+<!-- BODY -->
+
+<body>
+  <!-- USE `header.ejs` FILE TO RENDER HEADER IN ALL TEMPLATES-->
+  <header>
+    <%- include('../partials/header.ejs') %>
+  </header>
+
+  <!-- BODY LAYOUT CONTENT TO BE DYNAMICALLY POPULATED BY EJS FILES  -->
+  <%- body %>
+
+    <!-- USE `footer.ejs` FILE TO RENDER FOOTER IN ALL TEMPLATES -->
+    <footer>
+      <%- include('../partials/footer.ejs') %>
+    </footer>
+
+</body>
+
+</html>

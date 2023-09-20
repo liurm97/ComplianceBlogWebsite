@@ -1,0 +1,28 @@
+{
+  "name": "cm2040_mid_term_assignment_micro_blogger_webapplication",
+  "version": "1.0.0",
+  "description": "Mid term assignment submission",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-db": "cat db_schema.sql | sqlite3 database.db #build new database",
+    "clean-db": "rm database.db #remove the old database",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Bobby Liu",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "date-fns": "^2.30.0",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "sqlite3": "^5.1.2"
+  },
+  "engines": {
+    "npm": ">=8.0.0",
+    "node": ">=16.0.0"
+  }
+}

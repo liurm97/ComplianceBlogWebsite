@@ -1,0 +1,25 @@
+<!-- LAYOUT FOR AUTHOR SETTING PAGE -->
+<section class="author-box">
+
+  <!-- LINK TO HOME -->
+  <div class="author__setting">
+    <a href="/author/home">&#9794;Home</a>
+  </div>
+
+  <!-- A FORM THAT POSTS TO `/author/setting` ENDPOINT - To update blog information-->
+  <form method="POST" action="/author/setting" class="article__edit">
+    <div class="article__edit-title">
+      <label class="article-label" for="blog_title">Title</label>
+      <textarea name="blog_title" id="blog_title" cols="60" rows="2" required><%= title %></textarea>
+    </div>
+    <div class="article__edit-subtitle">
+      <label class="article-label" for="blog_subtitle">Subtitle</label>
+      <textarea name="blog_subtitle" id="blog_subtitle" cols="60" rows="2" required><%= subtitle %></textarea>
+    </div>
+    <div class="setting__edit-author">
+      <label class="article-label" for="blog_author">Author</label>
+      <textarea name="blog_author" id="blog_author" cols="60" rows="2" required><%= author %></textarea>
+    </div>
+    <button class="article__article-btn" type="submit">UPDATE</button>
+  </form>
+</section>

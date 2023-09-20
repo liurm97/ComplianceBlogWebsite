@@ -1,0 +1,73 @@
+<!-- LAYOUT FOR AUTHOR EDIT ARTICLE PAGE -->
+
+<section class="author-box">
+
+  <!-- LINK TO HOME   -->
+  <div class="author__setting">
+    <a href="/author/home">&#9794;Home</a>
+  </div>
+
+  <!-- CONDITION: CHECKS IF REQUEST IS EDIT OR CREATE -->
+  <% if (requestType && requestType=="edit" ) { %>
+    <div class="articles center">
+
+      <!-- DISPLAY ARTICLE INFORMATION -->
+      <div class="article__info">
+
+        <!-- CREATED AT TIMESTAMP-->
+        <span>Created: <%= created_at %></span>
+
+        <!-- MODIFIED AT TIMESTAMP-->
+        <span>Last Modified: <%= modified_at %></span>
+
+        <!-- STATUS-->
+        <span>Status: Draft</span>
+      </div>
+    </div>
+
+    <% } %>
+      <!-- IF EDIT - RENDER THE EDIT PAGE WITH ARTICLE INFORMATION -->
+      <!-- EDIT ARTICLE -->
+      <% if (requestType && requestType=="edit" ) { %>
+
+        <!-- A FORM THAT POSTS TO `/author/article/<%#= articleid %>/edit` ENDPOINT-->
+        <form method="POST" action="/author/article/<%= articleid %>/edit" class="article__edit">
+          <div class="article__edit-title">
+            <label class="article-label" for="article_title">Title</label>
+            <textarea name="article_title" id="article_title" cols="60" rows="2"
+              required><%= article_title %></textarea>
+          </div>
+          <div class="article__edit-subtitle">
+            <label class="article-label" for="article_subtitle">Subtitle</label>
+            <textarea name="article_subtitle" id="article_subtitle" cols="60" rows="2"
+              required><%= article_subtitle %></textarea>
+          </div>
+          <div class="article__edit-body">
+            <label class="article-label" for="article_body">Body</label>
+            <textarea name="article_body" id="article_body" cols="30" rows="10" required><%= article_body %></textarea>
+          </div>
+          <button class="article__article-btn" type="submit">UPDATE</button>
+        </form> %>
+
+        <!-- IF CREATE - RENDER THE EDIT PAGE WITHOUT ARTICLE INFORMATION -->
+        <!-- CREATE NEW ARTICLE -->
+        <% } else { %>
+
+          <!-- A FORM THAT POSTS TO `/author/article/create` ENDPOINT-->
+          <form method="POST" action="/author/article/create" class="article__edit">
+            <div class="article__edit-title">
+              <label class="article-label" for="article_title">Title</label>
+              <textarea name="article_title" id="article_title" cols="60" rows="2" required></textarea>
+            </div>
+            <div class="article__edit-subtitle">
+              <label class="article-label" for="article_subtitle">Subtitle</label>
+              <textarea name="article_subtitle" id="article_subtitle" cols="60" rows="2" required></textarea>
+            </div>
+            <div class="article__edit-body">
+              <label class="article-label" for="article_body">Body</label>
+              <textarea name="article_body" id="article_body" cols="30" rows="10" required></textarea>
+            </div>
+            <button class="article__article-btn" type="submit">CREATE</button>
+          </form> %>
+          <% } %>
+</section>

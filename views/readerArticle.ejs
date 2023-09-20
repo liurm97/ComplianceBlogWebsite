@@ -1,0 +1,71 @@
+<!-- LAYOUT FOR READER EDIT ARTICLE PAGE -->
+<section class="box">
+
+  <!-- LINK TO HOME -->
+  <div class="author__setting">
+    <a href="/reader/home">&#9794;Home</a>
+  </div>
+
+  <!-- EDIT ARTICLE SECTION -->
+  <div class="articles">
+
+    <!-- FORM THAT POSTS TO `/reader/article/:articleid/likes` ENDPOINT 
+    - To update number of likes of an article-->
+    <form action="/reader/article/<%= article_id %>/like" class="article__likes" method="POST">
+      <input type="submit" name="num_likes" id="num_likes" value="&hearts; <%= article_numlikes %>">
+    </form>
+
+    <!-- EDIT ARTICLE SECTION - HEADINGS -->
+    <div class="article__heading">
+      <span id="title" class="article__title">Title:
+        <%= article_title %>
+      </span>
+      <span class="article__date">
+        Published At: <%= article_modified_at %>
+      </span>
+    </div>
+
+    <span class="article__subtitle">
+      Subtitle: <%= article_subtitle %>
+    </span>
+
+    <!-- EDIT ARTICLE SECTION - BODY -->
+    <div class="article__body_box">
+      <p class="article__body">
+        <%= article_body %>
+      </p>
+    </div>
+  </div>
+
+  <!-- EDIT ARTICLE SECTION - COMMENT-->
+  <div class="comments">
+
+    <!-- EDIT ARTICLE SECTION - INPUT COMMENT-->
+    <div class="comment__box">
+      <label id="comment-form" for="comment__form" class="comment__text">Comment Text &colon; </label>
+      <form class="comment__form" action="/reader/article/<%= article_id %>/comment" method="POST">
+        <textarea class="comment__input" placeholder="Enter comment" name="comment__input" id="comment__input" cols="20"
+          rows="20"></textarea>
+        <input class="comment__submit" type="submit" value="ADD COMMENT">
+      </form>
+    </div>
+
+    <!-- EDIT ARTICLE SECTION - DISPLAY COMMENT -->
+    <div class="comment">
+      <% for( let i=0; i < commentRows.length; i++ ) { %>
+        <div class="comment-posted">
+          <span>
+            <%= commentRows[i].comments %>
+          </span>
+          <span>
+            <%= commentRows[i].article_created_at %>
+          </span>
+        </div>
+        <% } %>
+    </div>
+
+  </div>
+
+
+
+</section>
